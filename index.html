@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ubgames – Free Online Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+body{background:#0b0b0b;color:#fff;display:flex}
+
+/* Sidebar */
+.sidebar{
+  width:70px;
+  background:#050505;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:20px;
+  border-right:1px solid #222;
+}
+.sidebar i{
+  font-size:22px;
+  margin:18px 0;
+  color:#ccc;
+  cursor:pointer;
+}
+.sidebar i:hover{color:#fff}
+
+/* Main */
+.main{flex:1;padding:20px;overflow-y:auto}
+
+/* Top bar */
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.logo{font-size:22px;font-weight:bold}
+.search{
+  flex:1;
+  background:#141414;
+  border-radius:20px;
+  padding:10px 15px;
+  border:none;
+  color:#fff;
+}
+.search::placeholder{color:#777}
+
+/* Section */
+.section{margin-top:30px}
+.section h2{margin-bottom:12px}
+
+/* Game row */
+.row{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+}
+.card{
+  min-width:160px;
+  height:90px;
+  background:#1a1a1a;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:14px;
+  text-align:center;
+  padding:10px;
+}
+.card:hover{background:#262626}
+
+/* Player */
+.player{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:none;
+  flex-direction:column;
+}
+.player-header{
+  padding:10px;
+  background:#111;
+  display:flex;
+  justify-content:space-between;
+}
+.player iframe{
+  flex:1;
+  border:none;
+}
+.close{cursor:pointer;color:#ff5555}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <i>🏠</i>
+  <i>🔥</i>
+  <i>⭐</i>
+  <i>🎮</i>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Top -->
+  <div class="topbar">
+    <div class="logo">🍑 ubgames</div>
+    <input class="search" placeholder="Search for a game or keyword">
+  </div>
+
+  <!-- Featured -->
+  <div class="section">
+    <h2>Featured | January 2026</h2>
+    <div class="row">
+      <div class="card" onclick="play('https://www.retrogames.cc/embed/40238-tekken-3.html')">Tekken 3</div>
+      <div class="card" onclick="play('https://www.retrogames.cc/embed/10030-street-fighter-ii-champion-edition-street-fighter-2-920513-etc.html')">Street Fighter II</div>
+      <div class="card" onclick="play('https://www.retrogames.cc/embed/17484-fifa-2000-usa.html')">FIFA 2000</div>
+    </div>
+  </div>
+
+  <!-- Trending -->
+  <div class="section">
+    <h2>Trending this month</h2>
+    <div class="row">
+      <div class="card" onclick="play('https://cloud.onlinegames.io/games/2026/unity/steal-brainrot-heist/game.html')">Brainrot Heist</div>
+      <div class="card" onclick="play('https://www.onlinegames.io/games/2023/construct/211/highway-cars/index.html')">Highway Cars</div>
+      <div class="card" onclick="play('https://www.onlinegames.io/games/2023/unity/drift-fury/index.html')">Drift Fury</div>
+      <div class="card" onclick="play('https://www.onlinegames.io/games/2023/q2/geometry-dash-freezenova/index.html')">Geometry Dash</div>
+    </div>
+  </div>
+
+  <!-- Retro -->
+  <div class="section">
+    <h2>Retro Classics</h2>
+    <div class="row">
+      <div class="card" onclick="play('https://www.retrogames.cc/embed/40077-contender-2.html')">Contender 2</div>
+      <div class="card" onclick="play('https://www.retrogames.cc/embed/28096-dragon-ball-z-supersonic-warriors-k-projectg.html')">DBZ Supersonic</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Player -->
+<div class="player" id="player">
+  <div class="player-header">
+    <div>Now Playing</div>
+    <div class="close" onclick="closePlayer()">✖ Close</div>
+  </div>
+  <iframe id="frame" allowfullscreen></iframe>
+</div>
+
+<script>
+function play(url){
+  document.getElementById("frame").src = url;
+  document.getElementById("player").style.display="flex";
+}
+function closePlayer(){
+  document.getElementById("frame").src="";
+  document.getElementById("player").style.display="none";
+}
+</script>
+
+</body>
+</html>
